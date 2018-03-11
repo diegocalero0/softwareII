@@ -1,0 +1,33 @@
+{
+  "name": "proyectosoftware",
+  "version": "1.0.0",
+  "description": "aplicacion web para la venta de productos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegocalero0/softwareII.git"
+  },
+  "keywords": [
+    "venta",
+    "productos",
+    "software",
+    "ingenieria",
+    "compras",
+    "internet"
+  ],
+  "author": "Diego Calero, Santiago Peña, Carlos Lopez, Juan Muñoz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegocalero0/softwareII/issues"
+  },
+  "homepage": "https://github.com/diegocalero0/softwareII#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jade": "^1.11.0",
+    "mysql": "^2.15.0"
+  }
+}
