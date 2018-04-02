@@ -1,0 +1,34 @@
+extends ./layout.jade
+
+block contenido
+	div(class = "container-fluid containerlogin")
+		div(class = "row")
+			div(class = "col-md-9")
+				div(class = "loginizq")
+					p Compra lo que necesitas
+					p Ahorra tiempo y dinero
+			div(class = "col-md-3")
+				div(class = "container-fluid pt-4 pl-5")
+					div(class = "row")
+						h1(class = "tit") Inicia sesión
+					div(class = "row")
+						form(action = "/confirmlogin" method = "POST")
+							div(class = "form-group")
+								input(type = "text" placeholder = "Correo electrónico" name = "user" id = "user" class = "form-control" required = "required")
+							div(class = "form-group")
+								input(type = "password" placeholder = "Contraseña" name = "password" id = "password" class = "form-control" required = "required")
+								small(id="emailHelp" class="form-text text-muted")
+									a(href = "/restorepass") He olvidado mi contraseña.
+							div(class = "form-group")
+								input(type = "submit" method = "POST" class = "btn btn-primary" value = "Ingresar")
+
+					div(class = "row")
+						h1(class = "tit") Registrate
+					div(class = "row")
+						form(action = "/registro" method = "POST")
+							div(class = "form-group")
+								input(type = "text" placeholder = "Correo electrónico" name = "user" id = "userR" class = "form-control" required = "required")
+							div(class = "form-group")
+								input(type = "password" placeholder = "Contraseña" name = "password" id = "passwordR" class = "form-control" required = "required")
+							div(class = "form-group")
+								input(type = "submit" method = "POST" class = "btn btn-primary" value = "Registrate")

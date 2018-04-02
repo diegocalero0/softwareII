@@ -4,6 +4,6 @@ module.exports = function() {
 		host: 'localhost',
 		user: 'root',
 		password: 'adminroot',
-		database: 'ventas'
+		database: 'TIENDAVIRTUAL'
 	})
 }
