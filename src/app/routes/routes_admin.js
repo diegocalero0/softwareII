@@ -17,7 +17,15 @@ router.get("/agregarProducto", function(req, res){
 });
 
 router.get("/eliminarproducto", function(req, res){
-	console.log(req.body);
+	var id = req.url.split("?")[1].split("=")[1];
+
+	connection.query("DELETE FROM PRODUCTO WHERE ID_PRODUCTO = ?", [id], function(err, data, field){
+		if(err)
+			console.log();
+	});
+
+	res.redirect("/admin/productos");
+
 });
 
 router.post("/agregaradmin", function(req, res){
@@ -32,7 +40,7 @@ router.post("/agregaradmin", function(req, res){
 		}
 	});
 
-	res.redirect("/")
+	res.redirect("/");
 
 });
 
