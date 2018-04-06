@@ -5,9 +5,10 @@ block contenido
 		h1 Agregar Administrador
 		form(action="/admin/agregaradmin" method= "POST")
 			div(class="form-group")
-				label(for="correo") Email address
-				input(type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Ingresar correo electronico")
-				label(for="contraseña") Contraseña
-				input(type="contraseña" class="form-control" id="contraseña" aria-describedby"contraseñaHelp" placeholder="Ingresar contraseña")	
-			button(type="submit" class="btn btn-primary") Agresar
-		
+				label(for="usuario") Usuario
+				input(type="text" class="form-control" id="usuario" name="usuario" aria-describedby="emailHelp" placeholder="Ingresar usuario")
+			div(class="form-group")
+				label(for="contrasena") Contraseña
+				input(type="password" class="form-control" id="contrasena" name="contraseña" aria-describedby"contraseñaHelp" placeholder="Ingresar contraseña")
+			div(class="form-group")
+				input(type="submit" class="btn btn-primary" value= "Agregar")
