@@ -16,6 +16,26 @@ router.get("/agregarProducto", function(req, res){
 	res.render("admin/agregarProducto");
 });
 
+router.get("/eliminarproducto", function(req, res){
+	console.log(req.body);
+});
+
+router.post("/agregaradmin", function(req, res){
+
+	var usuario = req.fields.usuario;
+	var pass = req.fields.contrasena;
+
+
+	connection.query("INSERT INTO ADMINISTRADOR VALUES(?,?)", [usuario, pass], function(err, data, field){
+		if(err){
+			console.log(err);
+		}
+	});
+
+	res.redirect("/")
+
+});
+
 router.post("/validarProducto", function(req, res){
 	var referencia = req.fields.referencia;
 	var nombre = req.fields.nombre;

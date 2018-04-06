@@ -9,5 +9,4 @@ block contenido
 							h5(class = "nombreproducto") #{productos[i].NOMBRE}
 							img(class="card-img-top showproduct" src="/static/images/productos/#{productos[i].FOTO}" alt="Card image cap")
 							h5 Precio: $#{productos[i].PRECIO_VENTA}
-							a(href = "/app/detalleproducto/?id=#{productos[i].ID_PRODUCTO}" class = "clikable")
-							button(type="button" class="btn btn-primary") Ver detalles
+							a(href = "/admin/eliminarproducto/?id=#{productos[i].ID_PRODUCTO}" class = "btn btn-primary") Eliminar producto
