@@ -41,7 +41,7 @@ io.on("connect", function(socket){
 	});
 
 });
-
+//
 //inicializar servidor
 server.listen(app.get('port'), () => {
 	console.log('server on port', app.get('port'));
