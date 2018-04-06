@@ -4,7 +4,6 @@ module.exports = function() {
 		host: 'localhost',
 		user: 'root',
 		password: 'adminroot',
-		database: 'TIENDAVIRTUAL',
-		port: 8000
+		database: 'TIENDAVIRTUAL'
 	})
 }

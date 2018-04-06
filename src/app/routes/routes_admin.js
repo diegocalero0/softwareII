@@ -23,6 +23,18 @@ router.get("/agregarProducto", function(req, res){
 	res.render("admin/agregarProducto");
 });
 
+
+router.get("/eliminaradmin", function(req, res){
+
+	var id = req.url.split("?")[1].split("=")[1];
+
+	connection.query("DELETE FROM ADMINISTRADOR WHERE IDENTIFICACION = ?", [id], function(err, data, field){
+		if(err)
+			console.log(err);
+		res.redirect("/");
+	})
+});
+
 router.get("/eliminarproducto", function(req, res){
 	var id = req.url.split("?")[1].split("=")[1];
 
