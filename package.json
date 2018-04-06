@@ -35,6 +35,6 @@
     "socket.js": "^0.1.4"
   },
   "devDependencies": {
-    "nodemon": "^1.17.2"
+    "nodemon": "^1.17.3"
   }
 }
