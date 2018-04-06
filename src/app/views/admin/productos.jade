@@ -1,0 +1,16 @@
+extends ./layout.jade
+block contenido
+	div(class = "container pt-4 pb-4")
+		div(class="card-deck")
+			- for(var i = productos.length - 1; i >= 0; i--)
+				div(class = "card")
+					div(class = "card-body")
+						h5(class = "nombreproducto") #{productos[i].NOMBRE}
+					div(class = "container")
+						img(class="card-img-top img-fluid showproduct" src="/static/images/productos/#{productos[i].FOTO}" alt="Card image cap")
+					div(class = "card-body")
+						p #{productos[i].DESCRIPCION}
+						p #{productos[i].PRECIO_VENTA}
+						p
+							b #{productos[i].CANTIDAD} disponibles
+						div(class = "bcard")

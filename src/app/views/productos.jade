@@ -1,0 +1,13 @@
+extends ./layout.jade
+block contenido
+	div(class = "container pt-4 pb-4")
+		div(class = "row")
+			div(class="card-deck col-12")
+				- for(var i = productos.length - 1; i >= 0; i--)
+					div(class = "card pb-4")
+						div(class = "card-body")
+							h5(class = "nombreproducto") #{productos[i].NOMBRE}
+							img(class="card-img-top showproduct" src="/static/images/productos/#{productos[i].FOTO}" alt="Card image cap")
+							h5 Precio: $#{productos[i].PRECIO_VENTA}
+							a(href = "/app/detalleproducto/?id=#{productos[i].ID_PRODUCTO}" class = "clikable")
+							button(type="button" class="btn btn-primary") Ver detalles

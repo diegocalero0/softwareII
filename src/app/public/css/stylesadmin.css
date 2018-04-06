@@ -28,11 +28,6 @@ body{
     -webkit-transform: translate(-50%, -50%);
 }
 
-.containerlogin{
-	background-color: #607D8B;
-	height: 92vh;
-}
-
 .tit{
 	color: #fff;
 }
@@ -68,4 +63,18 @@ h1{
 
 .submitfooter{
 	width: 100%;
+}
+
+.imgproducto{
+	width: 40%;
+}
+
+.bcard{
+	background-color: #007bff;
+	position: relative;
+	height: 20px;
+}
+
+.nombreproducto{
+	color: #007bff;
 }

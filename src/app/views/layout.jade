@@ -8,10 +8,6 @@ html
 	body
 		nav(class="navbar navbar-expand-lg navbar-light bg-light")
 			a(class = "navbar-brand" href = "/") Inicio
-			div(class="collapse navbar-collapse" id="navbarSupportedContent")
-				ul(class = "navbar-nav mr-auto")
-					li(class="nav-item active")
-						a(class = "nav-link" href = "/masvendidos") Productos mas vendidos
 		block contenido
 
 		script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")
@@ -38,8 +34,8 @@ html
 									a(href = "http://www.twitter.com/diegocalero0" target = "_blank")
 										img(src = "static/images/twitter.png" class = "redsocialimg")
 					div(class = "col-md-4")
-						a(href = "/ingresoAdmin" class = "linkfooter") Ingresar como administrador
-						form(action = "loginadmin" method = "POST")
+						p Ingresar como administrador
+						form(action = "/shop/loginadmin" method = "POST")
 							div(class = "form-group")
 								input(type = "text" placeholder = "Identificación" name = "iden" id = "iden" class = "form-control" required = "required")
 							div(class = "form-group")

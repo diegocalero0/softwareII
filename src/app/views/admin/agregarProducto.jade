@@ -1,3 +1,31 @@
 extends ./layout.jade
 block contenido
-		a(href = "/login") agregar
+	div(class = "container pt-4 formregistro")
+		h1 Registrar producto
+		br
+		form(action = "/admin/validarProducto" method = "POST" enctype="multipart/form-data")
+			div(class = "form-group row")
+				label(for="referencia" class="col-md-2 col-form-label") Referencia:
+				input(type = "number" placeholder = "Código de referencia" name = "referencia" id = "referencia" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="nombre" class="col-md-2 col-form-label") Nombre:
+				input(type = "text" placeholder = "Nombre del producto" name = "nombre" id = "nombre" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="imagen" class = "col-md-2 col-form-label") Imagen:
+				div(class = "col-md-2")
+					img(src = "/static/images/productos/default.png" class = "imgproducto")
+				input(type = "file" class="form-control-file col-md-4" id="imagen" name = "imagen")
+			div(class = "form-group row")
+				label(for="descripcion" class="col-md-2 col-form-label") Descripción:
+				input(type = "text" placeholder = "Descripción del producto" name = "descripcion" id = "descripcion" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="precio" class="col-md-2 col-form-label") Precio de venta:
+				input(type = "number" placeholder = "Precio del producto" name = "precio" id = "precio" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="cantidad" class="col-md-2 col-form-label") Cantidad:
+				input(type = "number" placeholder = "Cantidad" name = "cantidad" id = "cantidad" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="materiales" class="col-md-2 col-form-label") Materiales:
+				input(type = "text" placeholder = "Materiales del producto" name = "materiales" id = "materiales" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row pl-2")
+				button(type = "submit" class = "btn btn-primary") Registrar producto
