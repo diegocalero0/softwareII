@@ -14,7 +14,7 @@ app.use(session({
 	saveUninitialized: false
 }));
 
-app.set("port", process.env.PORT || 8080);
+app.set("port", process.env.PORT || 4000);
 app.set("view engine", "jade");
 app.set("views", path.join(__dirname, "../app/views"));
 app.use(express.static(path.join(__dirname, "../app/public")));
