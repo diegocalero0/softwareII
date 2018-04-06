@@ -12,3 +12,17 @@ block contenido
 				input(type="password" class="form-control" id="contrasena" name="contrasena" aria-describedby"contraseñaHelp" placeholder="Ingresar contraseña")
 			div(class="form-group")
 				input(type="submit" class="btn btn-primary" value= "Agregar")
+		h1 Lista de administradores
+		table(class="table")
+			thead
+				tr
+					th(scope="col") Usuario
+					th(scope="col") Contraseña
+					th(scope="col") Eliminar
+			tbody
+				- for(var i = 0; i < administradores.length; i++)
+					tr
+						td #{administradores[i].IDENTIFICACION}
+						td #{administradores[i].CONTRASENIA}
+						td
+							a(class="btn btn-danger" href="/admin/eliminaradmin?id=#{administradores[i].IDENTIFICACION}") Eliminar
