@@ -13,6 +13,7 @@ router.post("/loginadmin", function(req, res){
 	connection.query("SELECT * FROM ADMINISTRADOR WHERE IDENTIFICACION = ? AND CONTRASENIA = ?", [iden, pass], function(err, data, field){
 		if(data.length != 0){
 			req.session.type_user = 0;
+			req.session.useradmin = iden;
 			res.redirect("/admin");
 		}else{
 			res.redirect("/");

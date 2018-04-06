@@ -8,7 +8,8 @@ var connection = dbConnection();
 router.use(session_admin);
 
 router.get("/", function(req, res){
-	res.render("admin/home");
+	console.log(req.session);
+	res.render("admin/home", {usuario:req.session.useradmin});
 });
 
 router.get("/agregarProducto", function(req, res){

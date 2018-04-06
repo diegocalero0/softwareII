@@ -84,14 +84,6 @@ h1{
   margin-bottom: 10px;
 }
 
-.card-deck .card:hover {
-	background-color: #E8EAF6;
-  display: block;
-  min-width: 30%;
-  width: 100vh;
-  margin-bottom: 10px;
-}
-
 .clikable{
 	position: absolute;
 	top: 0;
