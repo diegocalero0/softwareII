@@ -9,7 +9,14 @@ router.use(session_admin);
 
 router.get("/", function(req, res){
 	console.log(req.session);
-	res.render("admin/home", {usuario:req.session.useradmin});
+
+	connection.query("SELECT * FROM ADMINISTRADOR", function(err, data, field){
+		if(err)
+			console.log(err);
+		res.render("admin/home", {usuario:req.session.useradmin, administradores: data});
+	});
+
+	
 });
 
 router.get("/agregarProducto", function(req, res){
