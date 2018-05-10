@@ -9,4 +9,22 @@ block contenido
 							h5(class = "nombreproducto") #{productos[i].NOMBRE}
 							img(class="card-img-top showproduct" src="/static/images/productos/#{productos[i].FOTO}" alt="Card image cap")
 							h5 Precio: $#{productos[i].PRECIO_VENTA}
-							a(href = "/admin/eliminarproducto/?id=#{productos[i].ID_PRODUCTO}" class = "btn btn-primary") Eliminar producto
+							div(class = "container-fluid pl-0")
+								div(class = "row")
+									div(class = "col-7")
+										a(href = "/admin/modificarproducto/?id=#{productos[i].ID_PRODUCTO}" class = "btn btn-primary btn-block") Modificar
+									div(class = "col-5")
+										div(class = "btn btn-secondary btn-block" data-toggle="modal" data-target="#confirmarEliminacion") Eliminar
+										div(class = "modal fade" id="confirmarEliminacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+											div(class = "modal-dialog" role="document")
+												div(class = "modal-content")
+													div(class = "modal-header")
+														h5(class = "modal-title") Eliminar producto
+														button(type = "button" class = "close" data-dismiss = "modal" aria-label="Close")
+															span(aria-hidden = "true") &times;
+													div(class = "modal-content")
+														div(class = "container pt-4 pb-4")
+															p ¿Desea eliminar el producto?
+													div(class = "modal-footer")
+														button(type = "button" class = "btn btn-primary" data-dismiss="modal") Cancelar
+														a(href = "/admin/eliminarproducto/?id=#{productos[i].ID_PRODUCTO}" class = "btn btn-secondary") Confirmar

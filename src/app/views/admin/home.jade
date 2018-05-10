@@ -13,8 +13,8 @@ block contenido
 			div(class="form-group")
 				input(type="submit" class="btn btn-primary" value= "Agregar")
 		h1 Lista de administradores
-		table(class="table")
-			thead(class="thead-dark")
+		table(class="table table-bordered table-light table-hover")
+			thead(class="thead-light")
 				tr
 					th(scope="col") Usuario
 					th(scope="col") Contraseña
@@ -25,4 +25,17 @@ block contenido
 						td #{administradores[i].IDENTIFICACION}
 						td #{administradores[i].CONTRASENIA}
 						td
-							a(class="btn btn-danger" href="/admin/eliminaradmin?id=#{administradores[i].IDENTIFICACION}") Eliminar
+							div(class="btn btn-danger" data-toggle="modal" data-target="#confirmarEliminacion") Eliminar
+							div(class = "modal fade" id="confirmarEliminacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+								div(class = "modal-dialog" role="document")
+									div(class = "modal-content")
+										div(class = "modal-header")
+											h5(class = "modal-title") Eliminar administrador
+											button(type = "button" class = "close" data-dismiss = "modal" aria-label="Close")
+												span(aria-hidden = "true") &times;
+										div(class = "modal-content")
+											div(class = "container pt-4 pb-4")
+												p ¿Desea eliminar al administrador?
+										div(class = "modal-footer")
+											button(type = "button" class = "btn btn-primary" data-dismiss="modal") Cancelar
+											a(href="/admin/eliminaradmin?id=#{administradores[i].IDENTIFICACION}"  class = "btn btn-secondary") Confirmar
