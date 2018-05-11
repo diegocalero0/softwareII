@@ -8,6 +8,15 @@ html
 	body
 		nav(class="navbar navbar-expand-lg navbar-light bg-light")
 			a(class = "navbar-brand" href = "/") Inicio
+			div(class="collapse navbar-collapse" id="navbarSupportedContent")
+				ul(class = "navbar-nav mr-auto")
+					li(class="nav-item dropdown")
+						a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Iniciar sesión
+						div(class="dropdown-menu" aria-labelledby="navbarDropdown")
+							a(class="dropdown-item" href="/shop/login") Usuario
+							a(class="dropdown-item" href="/shop/ingresoadministrador") Administrador
+					li(class="nav-item active")
+						a(class = "nav-link" href = "/admin/cerrarsesion") Cerrar sesión
 		block contenido
 
 		script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")
@@ -16,29 +25,20 @@ html
 		footer(class = "footer")
 			div(class = "container pt-3")
 				div(class = "row")
-					div(class = "col-md-4")
+					div(class = "col-md-6")
 						p Dirección: Universidad del Quindió
 						p Teléfono: 747777
 						p Correo eletrónico: diegoacalero0@gmail.com
-					div(class = "col-md-4")
+					div(class = "col-md-6")
 						h5 Nuestras redes sociales
 						div(class = "container-fluid")
 							div(class = "row")
 								div(class = "col-md-4")
 									a(href = "http://www.facebook.com/diegocalero0" target = "_blank")
-										img(src = "static/images/facebook.png" class = "redsocialimg")
+										img(src = "/static/images/facebook.png" class = "redsocialimg")
 								div(class = "col-md-4")
 									a(href = "http://www.instagram.com/diegocalerog" target = "_blank")
-										img(src = "static/images/instagram.png" class = "redsocialimg")
+										img(src = "/static/images/instagram.png" class = "redsocialimg")
 								div(class = "col-md-4")
 									a(href = "http://www.twitter.com/diegocalero0" target = "_blank")
-										img(src = "static/images/twitter.png" class = "redsocialimg")
-					div(class = "col-md-4")
-						p Ingresar como administrador
-						form(action = "/shop/loginadmin" method = "POST")
-							div(class = "form-group")
-								input(type = "text" placeholder = "Identificación" name = "iden" id = "iden" class = "form-control" required = "required")
-							div(class = "form-group")
-								input(type = "password" placeholder = "Contraseña" name = "pass" id = "pass" class = "form-control" required = "required")
-							div(class = "form-group")
-								input(type = "submit" method = "POST" class = "btn btn-primary submitfooter" value = "Ingresar")
+										img(src = "/static/images/twitter.png" class = "redsocialimg")

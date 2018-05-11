@@ -29,7 +29,7 @@ body{
 }
 
 .containerlogin{
-	background-color: #607D8B;
+	background-color: #263238;
 	height: 92vh;
 }
 
@@ -62,7 +62,7 @@ h1{
 }
 
 .redsocialimg{
-	width: 70%;
+	width: 40%;
 	height: 100%;
 }
 
@@ -96,4 +96,22 @@ h1{
 
 .nombreproducto{
 	color: #007bff;
+}
+
+.formularioingresoadmin{
+	width: 100%;
+	text-align: center;
+}
+
+.formlogin{
+	width: 35%;
+	display: inline-block;
+}
+
+.tituloblanco{
+	color: #fff;
+}
+
+.imagenadmin{
+	max-width: 30%;
 }

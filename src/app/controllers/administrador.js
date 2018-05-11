@@ -1,11 +1,19 @@
 module.exports = {
 
-	eliminarAdministrador: function(id, callback){
-		connection.query("DELETE FROM ADMINISTRADOR WHERE IDENTIFICACION = ?", [id], function(err, data, field){
-			if(err)
-				callback(1, err);
-			callback(0, err);
+	iniciarSesion: function(req, iden, pass, callback){
+		connection.query("SELECT * FROM ADMINISTRADOR WHERE IDENTIFICACION = ? AND CONTRASENIA = ?",
+			[iden, pass], function(err, data, field){
+			if(data.length != 0){
+				req.session.type_user = 0;
+				req.session.useradmin = iden;
+			}
+			callback(data.length);
 		});
+	},
+
+	cerrarSesion: function(req, callback){
+		req.session.type_user = undefined;
+		callback(0);
 	}
 
 };

@@ -1,13 +1,13 @@
 extends ./layout.jade
 
 block contenido
-	script(type='text/javascript' src="socket.io/socket.io.js")
+	script(type='text/javascript' src="/socket.io/socket.io.js")
 	div(class = "container pt-4")
 		div(class = "row")
 			h1 Registrate
 		div(class = "row")
 			div(class = "col-md-12")
-				form(action = "/validarRegistro" method = "POST")
+				form(action = "/shop/validarRegistro" method = "POST")
 					div(class = "form-group row")
 						label(for="correo" class="col-md-2 col-form-label") Correo electronico
 						input(value = correo type = "text" placeholder = "Correo electrónico" name = "correo" id = "correo" class = "form-control col-md-5" required = "required" readonly)
