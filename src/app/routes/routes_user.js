@@ -14,4 +14,23 @@ router.get("/cerrarsesion", function(req, res){
 	});
 });
 
+router.post("/agregaralcarrito", function(req, res){
+	var idProducto = req.url.split("?")[1].split("=")[1];
+	cliente.agregarAlCarrito(req, idProducto, function(err){
+		res.redirect("/");
+	});
+});
+
+router.get("/carrito", function(req, res){
+	res.render("user/carrito", {carrito: req.session.carrito});
+});
+	
+router.get("/eliminardelcarrito", function(req, res){
+	var idx = req.url.split("?")[1].split("=")[1];
+	cliente.eliminarDelCarrito(req, idx, function(){
+		res.redirect("/user/carrito")
+	});
+
+});
+
 module.exports = router;

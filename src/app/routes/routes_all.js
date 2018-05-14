@@ -11,6 +11,7 @@ connection = dbConnection();
 router.use(session_all);
 
 router.get("/", function(req, res){
+	console.log(req.session.carrito);
 	tienda.listarProductos(function(data,err){
 		if(err){
 			console.log(err);
@@ -26,7 +27,6 @@ router.get("/detalleproducto", function(req, res){
 		if(err){
 			console.log(err);
 		}else{
-			console.log(res.locals);
 			res.render("all/detalleproducto", {producto: producto});
 		}
 	});

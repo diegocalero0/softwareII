@@ -10,7 +10,6 @@ router.use(session_admin);
 
 
 router.get("/", function(req, res){
-	console.log(res.locals);
 	tienda.obtenerAdministradores(function(data){
 		res.render("admin/home", {usuario:req.session.useradmin, administradores: data});
 	});
@@ -24,7 +23,6 @@ router.get("/modificarproducto", function(req, res){
 	tienda.obtenerProducto(req.url.split("?")[1].split("=")[1], function(producto, err){
 		if(err)
 			console.log(err);
-		console.log(producto);
 		res.render("admin/modificarProducto", {producto});
 	});
 });

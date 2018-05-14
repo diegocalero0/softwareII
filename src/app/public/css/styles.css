@@ -149,3 +149,19 @@ h1{
 .precioinfoproducto{
 	color: #007bff;
 }
+
+.contenedorcarrito{
+	border-radius: 5px;
+}
+
+.contenedorcarrito a{
+	width: 100%;
+}
+
+.imagencarrito{
+	width: 40px;
+}
+
+.titulocarrito{
+	text-align: center;
+}

@@ -1,0 +1,28 @@
+extends ../layout.jade
+block contenido
+	div(class = "container pt-4")
+		div(class = "row titulocarrito")
+			h1(class = "col-9") Carrito de compras
+		div(class = "row")
+			div(class = "col-9")
+				table(class="table table-bordered table-light table-hover")
+					thead(class="thead-light")
+						tr
+							th(scope="col") Imagen
+							th(scope="col") Cod. Referencia
+							th(scope="col") Nombre
+							th(scope="col") Precio
+							th(scope="col") Eliminar
+					tbody
+						- for(var i = 0; i < carrito.length; i++){
+							tr
+								td
+									img(class = "imagencarrito" src = "/static/images/productos/#{carrito[i].foto}")
+								td #{carrito[i].id}
+								td #{carrito[i].nombre}
+								td #{carrito[i].precio}
+								td
+									a(href = "/user/eliminardelcarrito?id=#{i}" class="btn btn-danger")
+										i(class="material-icons") remove_shopping_cart
+						- }
+			div(class = "col-3")
