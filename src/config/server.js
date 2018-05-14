@@ -6,6 +6,8 @@ var app = express();
 var formidable = require("express-formidable");
 var router_admin = require("../app/routes/routes_admin");
 var router_all = require("../app/routes/routes_all");
+var router_nouser = require("../app/routes/routes_nouser");
+var router_user = require("../app/routes/routes_user");
 require('events').EventEmitter.prototype._maxListeners = 100;
 
 app.use(session({
@@ -24,6 +26,9 @@ app.use(formidable({keepExtensions: true}));
 
 app.use("/admin", router_admin);
 app.use("/shop", router_all);
+app.use("/user", router_user);
+app.use("/nouser", router_nouser);
+
 
 //app.use(bodyParser.urlencoded({extended: true}));
 

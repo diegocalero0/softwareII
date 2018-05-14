@@ -1,10 +1,10 @@
-extends ./layout.jade
+extends ../layout.jade
 block contenido
 	div(class = "container pt-5 pb-5")
 		div(class = "col-md-12")
 			div(class = "formularioingresoadmin")
 				h2(class = "tituloblanco") Ingreso administrador
-				form(action = "/shop/loginadmin" method = "POST" class = "formlogin")
+				form(action = "/nouser/loginadmin" method = "POST" class = "formlogin")
 					img(src = "/static/images/administrador.png" class = "imagenadmin pb-4" draggable="false")
 					div(class = "form-group")
 						input(type = "text" placeholder = "Identificación" name = "iden" id = "iden" class = "form-control" required = "required")

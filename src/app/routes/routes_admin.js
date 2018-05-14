@@ -10,6 +10,7 @@ router.use(session_admin);
 
 
 router.get("/", function(req, res){
+	console.log(res.locals);
 	tienda.obtenerAdministradores(function(data){
 		res.render("admin/home", {usuario:req.session.useradmin, administradores: data});
 	});

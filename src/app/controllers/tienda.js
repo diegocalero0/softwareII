@@ -54,7 +54,7 @@ module.exports = {
 	},
 
 	agregarAdministrador: function(user, pass, callback){
-		connection.query("INSERT INTO ADMINISTRADOR VALUES(?,?)", [usuario, pass], function(err, data, field){
+		connection.query("INSERT INTO ADMINISTRADOR VALUES(?,?)", [user, pass], function(err, data, field){
 			callback(err);
 		});
 	},
@@ -80,6 +80,14 @@ module.exports = {
 			,[cliente.id, cliente.nombre, cliente.telefono, cliente.celular, cliente.direccion, cliente.profesion, cliente.correo, cliente.ciudad, cliente.tipo_doc, cliente.pass]
 			,function(err, data, field){
 				callback(err);
+		});
+	},
+
+	obtenerCliente: function(id, callback){
+		connection.query("SELECT * FROM CLIENTE WHERE EMAIL = ?", [id], function(err, data, field){
+			if(err)
+				console.log(err);
+			callback(data[0], err);
 		});
 	}
 

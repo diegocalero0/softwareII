@@ -115,3 +115,37 @@ h1{
 .imagenadmin{
 	max-width: 30%;
 }
+
+.imgproducto{
+	width: 40%;
+}
+
+.infadm{
+	color: #fff;
+}
+
+.imagendetalleproducto{
+	width: 100%;
+	border-radius: 20px;
+}
+
+.contenedorimagendetalle{
+	height: 100%;
+	border-radius: 20px;
+	background-color: #007bff;
+	padding: 3px;
+}
+
+.contenedorimagendetalle:hover{
+	border-radius: 20px;
+	background-color: #fff;
+	padding: 3px;
+}
+
+.infodetalleproducto{
+	color: #fff;
+}
+
+.precioinfoproducto{
+	color: #007bff;
+}

@@ -13,7 +13,7 @@ module.exports = {
 
 	cerrarSesion: function(req, callback){
 		req.session.type_user = undefined;
-		callback(0);
+		callback();
 	}
 
 };

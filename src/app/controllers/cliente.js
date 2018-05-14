@@ -5,10 +5,15 @@ module.exports = {
 			,function(err, data, fields){
 				if(data.length != 0){
 					req.session.type_user = 1;
-					req.session.useradmin = id;
+					req.session.userclient = id;
 				}
 				callback(data.length);
 		});
+	},
+
+	cerrarSesion: function(req, callback){
+		req.session.type_user = undefined;
+		callback();
 	}
 
 };

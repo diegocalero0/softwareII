@@ -1,4 +1,4 @@
-extends ./layout.jade
+extends ../layout.jade
 
 block contenido
 	div(class = "container-fluid containerlogin")
@@ -12,7 +12,7 @@ block contenido
 					div(class = "row")
 						h1(class = "tit") Inicia sesión
 					div(class = "row")
-						form(action = "/shop/confirmlogin" method = "POST")
+						form(action = "/nouser/confirmlogin" method = "POST")
 							div(class = "form-group")
 								input(type = "text" placeholder = "Correo electrónico" name = "user" id = "user" class = "form-control" required = "required")
 							div(class = "form-group")
@@ -25,7 +25,7 @@ block contenido
 					div(class = "row")
 						h1(class = "tit") Registrate
 					div(class = "row")
-						form(action = "/shop/registro" method = "POST")
+						form(action = "/nouser/registro" method = "POST")
 							div(class = "form-group")
 								input(type = "text" placeholder = "Correo electrónico" name = "user" id = "userR" class = "form-control" required = "required")
 							div(class = "form-group")

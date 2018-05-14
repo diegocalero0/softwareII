@@ -5,18 +5,41 @@ html
 		title CompraYa
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
 		link(rel="stylesheet" type="text/css" href="/static/css/styles.css")
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
 	body
-		nav(class="navbar navbar-expand-lg navbar-light bg-light")
-			a(class = "navbar-brand" href = "/") Inicio
-			div(class="collapse navbar-collapse" id="navbarSupportedContent")
-				ul(class = "navbar-nav mr-auto")
-					li(class="nav-item dropdown")
-						a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Iniciar sesión
-						div(class="dropdown-menu" aria-labelledby="navbarDropdown")
-							a(class="dropdown-item" href="/shop/login") Usuario
-							a(class="dropdown-item" href="/shop/ingresoadministrador") Administrador
-					li(class="nav-item active")
-						a(class = "nav-link" href = "/admin/cerrarsesion") Cerrar sesión
+		- if(type_user == -1){
+			nav(class="navbar navbar-expand-lg navbar-light bg-light")
+				a(class = "navbar-brand" href = "/") Inicio
+				div(class="collapse navbar-collapse" id="navbarSupportedContent")
+					ul(class = "navbar-nav mr-auto")
+						li(class="nav-item dropdown")
+							a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Iniciar sesión
+							div(class="dropdown-menu" aria-labelledby="navbarDropdown")
+								a(class="dropdown-item" href="/nouser/login") Usuario
+								a(class="dropdown-item" href="/nouser/ingresoadministrador") Administrador
+		- }else if(type_user == 0){
+			nav(class="navbar navbar-expand-lg navbar-light bg-light")
+				a(class = "navbar-brand" href = "/admin") Administrador
+				div(class="collapse navbar-collapse" id="navbarSupportedContent")
+					ul(class = "navbar-nav mr-auto")
+						li(class="nav-item dropdown")
+							a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Gestionar productos
+							div(class="dropdown-menu" aria-labelledby="navbarDropdown")
+								a(class="dropdown-item" href="/admin/productos") Ver productos
+								a(class="dropdown-item" href="/admin/agregarproducto") Agregar producto
+						li(class="nav-item active")
+							a(class = "nav-link" href = "/admin/cerrarsesion") Cerrar sesión
+		- }else if(type_user == 1){
+			nav(class="navbar navbar-expand-lg navbar-light bg-light")
+				a(class = "navbar-brand" href = "/shop") Bienvenido
+				div(class="collapse navbar-collapse" id="navbarSupportedContent")
+					ul(class = "navbar-nav mr-auto")
+						li(class="nav-item active")
+							a(class = "nav-link" href = "/user/cerrarsesion") Cerrar sesión
+		- }
+		
+							
+					
 		block contenido
 
 		script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")

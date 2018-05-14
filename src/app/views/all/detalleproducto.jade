@@ -1,0 +1,31 @@
+extends ../layout.jade
+block contenido
+	div(class = "container pt-4 pb-4")
+		div(class = "row")
+			div(class = "col-5 contenedorimagendetalle")
+				img(src = "/static/images/productos/#{producto.foto}" class = "imagendetalleproducto")
+			div(class = "col-7")
+				div(class = "container pl-5")
+					div(class = "row")
+						h4(class = "infodetalleproducto") Cod. de referencia: #{producto.id}
+					div(class = "row")
+						h4(class = "infodetalleproducto") Nombre del producto: #{producto.nombre}
+					div(class = "row")
+						h6(class = "infodetalleproducto") #{producto.descripcion}
+					div(class = "row")
+						h6(class = "infodetalleproducto precioinfoproducto") Precio: $#{producto.precio}
+					div(class = "row")
+						h6(class = "infodetalleproducto") Unidades disponibles: #{producto.cantidad}
+					div(class = "row")
+						h6(class = "infodetalleproducto") Materiales: #{producto.material}
+					- if(type_user == 1){
+						div(class = "row")
+							div(class = "col-2 pl-0")
+								h6(class = "infodetalleproducto") Cantidad:
+							div(class = "col-3 pl-0")
+								input(type = "number" class = "form-control")
+						div(class = "row")
+							div(class = "col-5 pl-0")
+									a(href = "/user/agregaralcarrito/?id=#{producto.id" class = "btn btn-primary btn-block") Añadir al carrito
+					- }
+		
