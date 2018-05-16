@@ -9,19 +9,18 @@ block contenido
 					div(class = "row")
 						h4(class = "infodetalleproducto") Cod. de referencia: #{producto.id}
 					div(class = "row")
-						h4(class = "infodetalleproducto") Nombre del producto: #{producto.nombre}
+						h4(class = "infodetalleproducto") #{producto.nombre}
 					div(class = "row")
 						h6(class = "infodetalleproducto") #{producto.descripcion}
 					div(class = "row")
-						h6(class = "infodetalleproducto precioinfoproducto") Precio: $#{producto.precio}
+						h3(class = "infodetalleproducto precioinfoproducto") Precio: $#{producto.precio}
 					div(class = "row")
 						h6(class = "infodetalleproducto") Unidades disponibles: #{producto.cantidad}
 					div(class = "row")
 						h6(class = "infodetalleproducto") Materiales: #{producto.material}
 					- if(type_user == 1){
-						form(action = "/user/agregaralcarrito/?id=#{producto.id}" method = "POST" enctype="multipart/form-data")
-							div(class = "form-group row")
-								div(class = "col-5 pl-0")
-									button(type = "submit"  class = "btn btn-primary btn-block") Añadir al carrito
+						div(class = "row")
+							a(href = "/user/agregaralcarrito/?id=#{producto.id}" class="btn btn-primary btn-block col-8")
+								i(class="material-icons") add_shopping_cart
 					- }
 		

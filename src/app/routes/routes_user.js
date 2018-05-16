@@ -14,7 +14,7 @@ router.get("/cerrarsesion", function(req, res){
 	});
 });
 
-router.post("/agregaralcarrito", function(req, res){
+router.get("/agregaralcarrito", function(req, res){
 	var idProducto = req.url.split("?")[1].split("=")[1];
 	cliente.agregarAlCarrito(req, idProducto, function(err){
 		res.redirect("/");
@@ -31,6 +31,10 @@ router.get("/eliminardelcarrito", function(req, res){
 		res.redirect("/user/carrito")
 	});
 
+});
+
+router.get("/perfil", function(req, res){
+	res.render("user/perfil");
 });
 
 module.exports = router;

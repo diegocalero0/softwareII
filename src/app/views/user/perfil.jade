@@ -1,0 +1,121 @@
+extends ../layout.jade
+block contenido
+	script(type='text/javascript' src="/socket.io/socket.io.js")
+	div(class = "container pt-4 pb-4")
+		div(class = "row")
+			div(class = "col-2")
+				img(src = "/static/images/perfil.png" class = "imagenperfil" draggable="false")
+			div(class = "col-10")
+				form(action = "/nouser/validarRegistro" method = "POST")
+					div(class = "form-group row")
+						label(for="correo" class="col-md-2 col-form-label") Correo electronico
+						input(value = "#{user.EMAIL}" type = "text" placeholder = "Correo electrónico" name = "correo" id = "correo" class = "form-control col-md-4" required = "required" readonly)
+						label(for="password" class="col-md-2 col-form-label") Contraseña
+						input(value = "#{user.CONTRASENIA}" type = "password" placeholder = "Contraseña" name = "password" id = "password" class = "form-control col-md-4" required = "required" readonly)
+					div(class = "form-group row")
+						label(for="nombre" class="col-md-2 col-form-label") Nombre
+						input(value = "#{user.NOMBRE_COMPLETO}" type = "text" placeholder = "Nombre" name = "nombre" id = "nombre" class = "form-control col-md-4" required = "required" readonly)
+					div(class = "form-group row")
+						label(for="telefono" class="col-md-2 col-form-label") Teléfono
+						input(value = "#{user.TELEFONO_RESIDENCIA}"  type = "text" placeholder = "Teléfono" name = "telefono" id = "telefono" class = "form-control col-md-4" required = "required" readonly)
+						label(for="celular" class="col-md-2 col-form-label") Celular
+						input(value = "#{user.TELEFONO_CELULAR}" type = "text" placeholder = "Celular" name = "celular" id = "celular" class = "form-control col-md-4" readonly)
+					div(class = "form-group row")
+						label(for="pais" class="col-md-2 col-form-label") País
+						select(class="form-control col-sm-4" id = "pais" name = "pais" readonly)
+						label(for="pais" class="col-md-2 col-form-label") Departamento
+						select(class="form-control col-sm-4" id = "departamento" name = "departamento" readonly)
+					div(class = "form-group row")
+						label(for="pais" class="col-md-2 col-form-ciudad") Ciudad
+						select(class="form-control col-sm-4" id = "ciudad" name = "ciudad" readonly)
+						label(for="direccion" class="col-md-2 col-form-label") Dirección
+						input(value = "#{user.DIRECCION}" type = "text" placeholder = "Dirección" name = "direccion" id = "direccion" class = "form-control col-md-4" readonly)
+					div(class = "form-group row")
+						label(for="profesion" class="col-md-2 col-form-label") Profesión
+						input(value = "#{user.PROFESION}" type = "text" placeholder = "Profesión" name = "profesion" id = "profesion" class = "form-control col-md-4" readonly)
+					div(class = "form-group row")
+						div(class = "col-6")
+							div(class = "btn btn-secondary col-12" id = "modificar" ) Modificar información
+						div(class = "col-6 alinearderecha")
+							input(type = "submit" class = "btn btn-primary" value = "Guardar cambios")
+					div(class = "form-group row")
+						div(class = "col-6")
+							div(class = "btn btn-secondary col-6" id = "cancelar" ) Cancelar
+	script.
+		var io = io.connect('http://localhost:8080', {'forceNew':true});
+		var spaises = document.getElementById('pais');
+		var sdep = document.getElementById("departamento");
+		var smun = document.getElementById("ciudad");
+		var btnmodificar = document.getElementById("modificar");
+		var btncancelar = document.getElementById("cancelar");
+
+
+
+		btnmodificar.setAttribute("onclick", "habilitar()");
+		btncancelar.setAttribute("onclick", "deshabilitar()");
+		spaises.setAttribute("onchange", "eventoDepartamentos()");
+		sdep.setAttribute("onchange", "eventoCiudad()");
+
+		function habilitar(){
+			document.getElementById("correo").readOnly = false;
+			document.getElementById("password").readOnly = false;
+			document.getElementById("nombre").readOnly = false;
+			document.getElementById("telefono").readOnly = false;
+			document.getElementById("celular").readOnly = false;
+			document.getElementById("pais").readOnly = false;
+			document.getElementById("departamento").readOnly = false;
+			document.getElementById("ciudad").readOnly = false;
+			document.getElementById("direccion").readOnly = false;
+			document.getElementById("profesion").readOnly = false;
+		}
+
+		function deshabilitar(){
+			document.getElementById("correo").readOnly = true;
+			document.getElementById("password").readOnly = true;
+			document.getElementById("nombre").readOnly = true;
+			document.getElementById("telefono").readOnly = true;
+			document.getElementById("celular").readOnly = true;
+			document.getElementById("pais").readOnly = true;
+			document.getElementById("departamento").readOnly = true;
+			document.getElementById("ciudad").readOnly = true;
+			document.getElementById("direccion").readOnly = true;
+			document.getElementById("profesion").readOnly = true;
+		}
+
+		
+		function eventoDepartamentos(){
+			io.emit("departamentos", {id:spaises.value});
+		}
+
+		function eventoCiudad(){
+			io.emit("municipios", {id: sdep.value});
+		}
+
+		io.on("paises", function(data){
+			var cont = data.length;
+			spaises.length = cont;
+			for(var i = 0; i < cont; i++){
+				spaises.options[i] = new Option(data[i].NOMBRE, data[i].ID_PAIS);
+			};
+
+			io.emit("departamentos", {id:spaises.value});
+		});
+
+		io.on("departamentos", function(data){
+			var cont = data.length;
+			sdep.length = cont;
+			for(var i = 0; i < cont; i++){
+				sdep.options[i] = new Option(data[i].NOMBRE, data[i].ID_DEPARTAMENTO);
+			};
+
+			io.emit("municipios", {id: sdep.value});
+
+		});
+
+		io.on("municipios", function(data){
+			var cont = data.length;
+			smun.length = cont;
+			for(var i = 0; i < cont; i++){
+				smun.options[i] = new Option(data[i].NOMBRE, data[i].ID);
+			};
+		});

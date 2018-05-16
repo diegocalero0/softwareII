@@ -34,8 +34,11 @@ html
 				a(class = "navbar-brand" href = "/shop") Bienvenido
 				div(class="collapse navbar-collapse" id="navbarSupportedContent")
 					ul(class = "navbar-nav mr-auto")
-						li(class="nav-item active")
-							a(class = "nav-link" href = "/user/cerrarsesion") Cerrar sesión
+						li(class="nav-item dropdown")
+							a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") #{user.NOMBRE_COMPLETO}
+							div(class="dropdown-menu" aria-labelledby="navbarDropdown")
+								a(class = "nav-link" href = "/user/perfil") Perfil
+								a(class = "nav-link" href = "/user/cerrarsesion") Cerrar sesión
 					div(class = "contenedorcarrito")
 						a(href = "/user/carrito" class ="my-2 my-lg-0 btn-primary btn") Carrito
 							i(class="material-icons") shopping_cart
