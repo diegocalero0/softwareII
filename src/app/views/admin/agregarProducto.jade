@@ -11,13 +11,29 @@ block contenido
 				label(for="nombre" class="col-md-2 col-form-label") Nombre:
 				input(type = "text" placeholder = "Nombre del producto" name = "nombre" id = "nombre" class = "form-control col-md-6" required = "required")
 			div(class = "form-group row")
-				label(for="imagen" class = "col-md-2 col-form-label") Imagen:
-				div(class = "col-md-2")
-					img(src = "/static/images/productos/default.png" class = "imgproducto")
-				input(type = "file" class="form-control-file col-md-4" id="imagen" name = "imagen")
-			div(class = "form-group row")
 				label(for="descripcion" class="col-md-2 col-form-label") Descripción:
 				input(type = "text" placeholder = "Descripción del producto" name = "descripcion" id = "descripcion" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="tipo" class="col-md-2 col-form-label") Tipo:
+				input(type = "text" placeholder = "Tipo producto" name = "tipo" id = "tipo" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="materiales" class="col-md-2 col-form-label") Materiales:
+				input(type = "text" placeholder = "Materiales del producto" name = "materiales" id = "materiales" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="alto" class="col-md-2 col-form-label") Alto:
+				input(type = "number" placeholder = "Alto del producto (cm)" name = "alto" id = "alto" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="ancho" class="col-md-2 col-form-label") Ancho:
+				input(type = "number" placeholder = "Ancho del producto (cm)" name = "ancho" id = "ancho" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="profundidad" class="col-md-2 col-form-label") Profundidad:
+				input(type = "number" placeholder = "Profundidad del producto (cm)" name = "profundidad" id = "profundidad" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="color" class="col-md-2 col-form-label") Color:
+				input(type = "text" placeholder = "Color del producto" name = "color" id = "color" class = "form-control col-md-6" required = "required")
+			div(class = "form-group row")
+				label(for="peso" class="col-md-2 col-form-label") Peso:
+				input(type = "number" placeholder = "Peso del producto(Gramos)" name = "peso" id = "peso" class = "form-control col-md-6" required = "required")
 			div(class = "form-group row")
 				label(for="precio" class="col-md-2 col-form-label") Precio de venta:
 				input(type = "number" placeholder = "Precio del producto" name = "precio" id = "precio" class = "form-control col-md-6" required = "required")
@@ -25,7 +41,10 @@ block contenido
 				label(for="cantidad" class="col-md-2 col-form-label") Cantidad:
 				input(type = "number" placeholder = "Cantidad" name = "cantidad" id = "cantidad" class = "form-control col-md-6" required = "required")
 			div(class = "form-group row")
-				label(for="materiales" class="col-md-2 col-form-label") Materiales:
-				input(type = "text" placeholder = "Materiales del producto" name = "materiales" id = "materiales" class = "form-control col-md-6" required = "required")
+				label(for="imagen" class = "col-md-2 col-form-label") Imagen:
+				div(class = "col-md-2")
+					img(src = "/static/images/productos/default.png" class = "imgproducto")
+				input(type = "file" class="form-control-file col-md-4" id="imagen" name = "imagen")
+			
 			div(class = "form-group row pl-2")
 				button(type = "submit" class = "btn btn-primary") Registrar producto

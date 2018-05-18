@@ -98,18 +98,30 @@ router.post("/validarProducto", function(req, res){
 	var referencia = req.fields.referencia;
 	var nombre = req.fields.nombre;
 	var descripcion = req.fields.descripcion;
+	var tipo = req.fields.tipo;
+	var materiales = req.fields.materiales;
+	var alto = req.fields.alto;
+	var ancho = req.fields.ancho;
+	var profundidad = req.fields.profundidad;
+	var color = req.fields.color;
+	var peso = req.fields.peso;
 	var precio = req.fields.precio;
 	var cantidad = req.fields.cantidad;
-	var materiales = req.fields.materiales;
 	var imagen = "default.png";
 
 	var producto = {
 		"id": referencia,
 		"nombre": nombre,
 		"descripcion": descripcion,
+		"tipo": tipo,
+		"material": materiales,
+		"alto": alto,
+		"ancho": ancho,
+		"profundidad": profundidad,
+		"color": color,
+		"peso":peso,
 		"precio": precio,
 		"cantidad": cantidad,
-		"material": materiales,
 		"foto": imagen
 	}
 

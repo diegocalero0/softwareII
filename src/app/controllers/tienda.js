@@ -40,8 +40,8 @@ module.exports = {
 	},
 
 	agregarProducto: function(producto, callback){
-		connection.query("INSERT INTO PRODUCTO (ID_PRODUCTO, NOMBRE, DESCRIPCION, PRECIO_VENTA, CANTIDAD, MATERIAL, FOTO) VALUES(?,?,?,?,?,?,?)",
-			[producto.id, producto.nombre, producto.descripcion, producto.precio, producto.cantidad, producto.material, producto.foto]
+		connection.query("INSERT INTO PRODUCTO (ID_PRODUCTO, NOMBRE, DESCRIPCION, PRECIO_VENTA, CANTIDAD, MATERIAL, FOTO, TIPO, ANCHO, ALTO, PROFUNDIDAD, COLOR, PESO) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
+			[producto.id, producto.nombre, producto.descripcion, producto.precio, producto.cantidad, producto.material, producto.foto, producto.tipo, producto.ancho, producto.alto, producto.profundidad, producto.color, producto.peso]
 		,function(err, data, field){
 			callback(err);
 		});
