@@ -89,6 +89,58 @@ module.exports = {
 				console.log(err);
 			callback(data[0], err);
 		});
+	},
+
+	obtenerClientePorId: function(id, callback){
+		connection.query("SELECT * FROM CLIENTE WHERE NUM_IDENTIFICACION = ?", [id], function(err, data, field){
+			if(err)
+				console.log(err);
+			callback(data[0], err);
+		});
+	},
+
+	listarClientes: function(callback){
+		connection.query("SELECT * FROM CLIENTE", function(err, data, field){
+			if(err)
+				console.log(err);
+			callback(data);
+		});
+	},
+
+	listarClientesPorId: function(id, callback){
+		connection.query("SELECT * FROM CLIENTE WHERE NUM_IDENTIFICACION = ?", [id], function(err, data, field){
+			if(err)
+				console.log(err);
+			callback(data, err);
+		});
+	},
+
+	listarClientesPorNombre: function(nombre, callback){
+		connection.query("SELECT * FROM CLIENTE WHERE NOMBRE_COMPLETO LIKE \'%" + nombre + "%\'", function(err, data, field){
+			if(err)
+				console.log(err);
+			callback(data, err);
+		});
+	},
+
+	listarClientesPorEmail: function(email, callback){
+		connection.query("SELECT * FROM CLIENTE WHERE EMAIL LIKE \'%" + email + "%\'", function(err, data, field){
+			if(err)
+				console.log(err);
+			callback(data, err);
+		});
+	},
+
+	obtenerCiudad: function(id, callback){
+		connection.query("SELECT * FROM CIUDAD WHERE ID = ?", [id], function(err, data, fields){
+			callback(data[0]);
+		});
+	},
+
+	eliminarCliente: function(id, callback){
+		connection.query("DELETE FROM CLIENTE WHERE NUM_IDENTIFICACION = ?", [id], function(err, data, fields){
+			callback(1);
+		});
 	}
 
 }

@@ -6,7 +6,7 @@ block contenido
 			div(class = "col-2")
 				img(src = "/static/images/perfil.png" class = "imagenperfil" draggable="false")
 			div(class = "col-10")
-				form(action = "/nouser/validarRegistro" method = "POST")
+				form(action = "/user/guardarcambios" method = "POST")
 					div(class = "form-group row")
 						label(for="correo" class="col-md-2 col-form-label") Correo electronico
 						input(value = "#{user.EMAIL}" type = "text" placeholder = "Correo electrónico" name = "correo" id = "correo" class = "form-control col-md-4" required = "required" readonly)
@@ -40,24 +40,21 @@ block contenido
 							input(type = "submit" class = "btn btn-primary" value = "Guardar cambios")
 					div(class = "form-group row")
 						div(class = "col-6")
-							div(class = "btn btn-secondary col-6" id = "cancelar" ) Cancelar
+							a(href = "/user/perfil" class = "btn btn-secondary col-6" id = "cancelar" ) Cancelar
 	script.
 		var io = io.connect('http://localhost:8080', {'forceNew':true});
 		var spaises = document.getElementById('pais');
 		var sdep = document.getElementById("departamento");
 		var smun = document.getElementById("ciudad");
 		var btnmodificar = document.getElementById("modificar");
-		var btncancelar = document.getElementById("cancelar");
 
 
 
 		btnmodificar.setAttribute("onclick", "habilitar()");
-		btncancelar.setAttribute("onclick", "deshabilitar()");
 		spaises.setAttribute("onchange", "eventoDepartamentos()");
 		sdep.setAttribute("onchange", "eventoCiudad()");
 
 		function habilitar(){
-			document.getElementById("correo").readOnly = false;
 			document.getElementById("password").readOnly = false;
 			document.getElementById("nombre").readOnly = false;
 			document.getElementById("telefono").readOnly = false;
@@ -67,19 +64,6 @@ block contenido
 			document.getElementById("ciudad").readOnly = false;
 			document.getElementById("direccion").readOnly = false;
 			document.getElementById("profesion").readOnly = false;
-		}
-
-		function deshabilitar(){
-			document.getElementById("correo").readOnly = true;
-			document.getElementById("password").readOnly = true;
-			document.getElementById("nombre").readOnly = true;
-			document.getElementById("telefono").readOnly = true;
-			document.getElementById("celular").readOnly = true;
-			document.getElementById("pais").readOnly = true;
-			document.getElementById("departamento").readOnly = true;
-			document.getElementById("ciudad").readOnly = true;
-			document.getElementById("direccion").readOnly = true;
-			document.getElementById("profesion").readOnly = true;
 		}
 
 		

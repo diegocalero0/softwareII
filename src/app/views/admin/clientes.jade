@@ -1,0 +1,43 @@
+extends ../layout.jade
+block contenido
+	div(class ="container pt-4 pb-4")
+		div(class = "row")
+			div(class = "col-4")
+				h4(class = "row tituloblanco") Búsqueda de clientes
+				form(action = "/admin/clientes" method = "POST")
+					div(class = "form-group")
+						div(class = "row")
+							label(for = "documento") No. Documento
+						div(class = "row")
+							input(type = "text" placeholder = "Número de documento" name = "documento" id = "documento" class = "form-control col-md-6")
+					div(class = "form-group")
+						div(class = "row")
+							label(for = "nombre") Nombre
+						div(class = "row")
+							input(type = "text" placeholder = "Nombre" name = "nombre" id = "nombre" class = "form-control col-md-6")
+					div(class = "form-group")
+						div(class = "row")
+							label(for = "correo") Email
+						div(class = "row")
+							input(type = "text" placeholder = "Correo" name = "correo" id = "correo" class = "form-control col-md-6")
+					div(class = "form-group")
+						div(class = "row")
+							input(type = "submit" class = "btn btn-primary" value = "Buscar")
+					div(class = "form-group row")
+						a(href = "/admin/clientes" class = "btn btn-secondary") Cancelar
+
+			div(class = "col-8")
+				h1 Clientes registrados
+				table(class="table table-bordered table-light table-hover")
+					thead(class="thead-light")
+						tr
+							th(scope="col") Usuario
+							th(scope="col") Contraseña
+							th(scope="col") Email
+					tbody
+						- for(var i = 0; i < clientes.length; i++)
+							tr
+								td
+									a(href = "/admin/clientes/cliente?id=#{clientes[i].NUM_IDENTIFICACION}" class = "tituloazul") #{clientes[i].NUM_IDENTIFICACION}
+								td #{clientes[i].NOMBRE_COMPLETO}
+								td #{clientes[i].EMAIL}

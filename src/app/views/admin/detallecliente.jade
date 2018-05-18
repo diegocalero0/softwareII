@@ -1,0 +1,41 @@
+extends ../layout.jade
+block contenido
+	script(type='text/javascript' src="/socket.io/socket.io.js")
+	div(class = "container pt-4 pb-4")
+		div(class = "row")
+			div(class = "col-2")
+				img(src = "/static/images/perfil.png" class = "imagenperfil" draggable="false")
+			div(class = "col-10 pl-5")
+				div(class = "row")
+					h3(class = "tituloblanco") Tipo identificación: #{cliente.TIPO_DOCUMENTO}
+				div(class = "row")
+					h3(class = "tituloblanco") No. identificación: #{cliente.NUM_IDENTIFICACION}
+				div(class = "row")
+					h3(class = "tituloblanco") Nombre: #{cliente.NOMBRE_COMPLETO}
+				div(class = "row")
+					h3(class = "tituloblanco") Teléfono: #{cliente.TELEFONO_RESIDENCIA}
+				div(class = "row")
+					h3(class = "tituloblanco") Celular: #{cliente.TELEFONO_CELULAR}
+				div(class = "row")
+					h3(class = "tituloblanco") Dirección: #{cliente.DIRECCION}
+				div(class = "row")
+					h3(class = "tituloblanco") Profesión: #{cliente.PROFESION}
+				div(class = "row")
+					h3(class = "tituloblanco") Correo: #{cliente.EMAIL}
+				div(class = "row")
+					h3(class = "tituloblanco") Ciudad: #{cliente.CIUDAD_ID}
+				div(class = "row")
+					div(class="btn btn-danger" data-toggle="modal" data-target="#confirmarEliminacion") Eliminar cliente
+					div(class = "modal fade" id="confirmarEliminacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+						div(class = "modal-dialog" role="document")
+							div(class = "modal-content")
+								div(class = "modal-header")
+									h5(class = "modal-title") Eliminar cliente
+									button(type = "button" class = "close" data-dismiss = "modal" aria-label="Close")
+										span(aria-hidden = "true") &times;
+								div(class = "modal-content")
+									div(class = "container pt-4 pb-4")
+										p ¿Desea eliminar al cliente?
+								div(class = "modal-footer")
+									button(type = "button" class = "btn btn-primary" data-dismiss="modal") Cancelar
+									a(href="/admin/eliminarcliente?id=#{cliente.NUM_IDENTIFICACION}"  class = "btn btn-secondary") Confirmar

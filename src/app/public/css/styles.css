@@ -112,6 +112,14 @@ h1{
 	color: #fff;
 }
 
+.tituloazul{
+	color: #007bff;
+}
+
+.tituloazul:hover{
+	color: #007bff;
+}
+
 .imagenadmin{
 	max-width: 30%;
 }

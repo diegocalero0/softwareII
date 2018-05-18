@@ -144,4 +144,58 @@ router.get("/cerrarsesion", function(req, res){
 	});
 });
 
+router.get("/clientes", function(req, res){
+	tienda.listarClientes(function(data, err){
+		res.render("admin/clientes", {clientes:data});
+	});
+});
+
+router.post("/clientes", function(req, res){
+	var id = req.fields.documento;
+	var nombre = req.fields.nombre;
+	var email = req.fields.correo;
+
+	if(id != ""){
+		tienda.listarClientesPorId(id, function(data, err){
+			res.render("admin/clientes", {clientes:data});
+		});
+	}else if(nombre != ""){
+		tienda.listarClientesPorNombre(nombre, function(data, err){
+			res.render("admin/clientes", {clientes:data});
+		});
+	}else if(email != ""){
+		tienda.listarClientesPorEmail(email, function(data, err){
+			res.render("admin/clientes", {clientes:data});
+		});
+	}else{
+		tienda.listarClientes(function(data, err){
+			res.render("admin/clientes", {clientes:data});
+		});
+	}
+});
+
+router.get("/clientes/cliente", function(req, res){
+	var id = req.url.split("?")[1].split("=")[1];
+	tienda.obtenerClientePorId(id, function(cliente, err){
+		if(cliente.TIPO_DOCUMENTO == 0)
+			cliente.TIPO_DOCUMENTO = "Cédula";
+		else
+			cliente.TIPO_DOCUMENTO = "NIT";
+
+		tienda.obtenerCiudad(cliente.CIUDAD_ID, function(ciudad){
+			cliente.CIUDAD_ID = ciudad.NOMBRE;
+			console.log(ciudad);
+			res.render("admin/detallecliente", {cliente: cliente});
+		});
+		
+	});
+});
+
+router.get("/eliminarcliente", function(req, res){
+	var id = req.url.split("?")[1].split("=")[1];
+	tienda.eliminarCliente(id, function(eliminado){
+		res.redirect("/admin/clientes");
+	});
+});
+
 module.exports = router;

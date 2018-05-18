@@ -37,4 +37,12 @@ router.get("/perfil", function(req, res){
 	res.render("user/perfil");
 });
 
+router.post("/guardarcambios", function(req, res){
+	cliente.modificarDatos(req.session.userclient, req.fields, function(err){
+		if(err)
+			console.log(err);
+		res.redirect("/user/perfil");
+	});
+});
+
 module.exports = router;

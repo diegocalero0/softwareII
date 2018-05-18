@@ -27,6 +27,10 @@ html
 							div(class="dropdown-menu" aria-labelledby="navbarDropdown")
 								a(class="dropdown-item" href="/admin/productos") Ver productos
 								a(class="dropdown-item" href="/admin/agregarproducto") Agregar producto
+						li(class="nav-item dropdown")
+							a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Gestionar clientes
+							div(class="dropdown-menu" aria-labelledby="navbarDropdown")
+								a(class="dropdown-item" href="/admin/clientes") Ver clientes
 						li(class="nav-item active")
 							a(class = "nav-link" href = "/admin/cerrarsesion") Cerrar sesión
 		- }else if(type_user == 1){
