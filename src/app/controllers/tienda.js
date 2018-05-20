@@ -6,34 +6,43 @@ module.exports = {
 		});
 	},
 
+	listarProductosPorReferencia: function(referencia, callback){
+		connection.query("SELECT * FROM PRODUCTO WHERE ID_PRODUCTO = ?", [referencia], function(err, data, fields){
+			callback(data, err);
+		});
+	},
+
+	listarProductosPorNombre: function(nombre, callback){
+		connection.query("SELECT * FROM PRODUCTO WHERE NOMBRE LIKE \'%" + nombre + "%\'", function(err, data, fields){
+			callback(data, err);
+		});
+	},
+
+	listarProductosPorTipo: function(tipo, callback){
+		connection.query("SELECT * FROM PRODUCTO WHERE TIPO LIKE \'%" + tipo + "%\'", function(err, data, fields){
+			callback(data, err);
+		});
+	},
+
 	obtenerProducto: function(id, callback){
 		var producto;
 		connection.query("SELECT * FROM PRODUCTO WHERE ID_PRODUCTO = ?", [id], function(err, data, fields){
 			if(err)
 				callback(undefined, err);
-			producto = {
-				"id": id,
-				"nombre": data[0].NOMBRE,
-				"descripcion": data[0].DESCRIPCION,
-				"precio": data[0].PRECIO_VENTA,
-				"cantidad": data[0].CANTIDAD,
-				"material": data[0].MATERIAL,
-				"foto": data[0].FOTO
-			}
-			callback(producto, err);
+			callback(data[0], err);
 		});
 	},
 
 	modificarProducto: function(producto, callback){
 		if(producto.foto === undefined)
-			connection.query("UPDATE PRODUCTO SET NOMBRE = ?, DESCRIPCION = ?, PRECIO_VENTA = ?, CANTIDAD = ?, MATERIAL = ? WHERE ID_PRODUCTO = ?"
-				,[producto.nombre, producto.descripcion, producto.precio, producto.cantidad, producto.material, producto.id]
+			connection.query("UPDATE PRODUCTO SET NOMBRE = ?, DESCRIPCION = ?, TIPO = ?, MATERIAL = ?, ALTO = ?, ANCHO = ?, PROFUNDIDAD = ?, COLOR = ?, PESO = ? WHERE ID_PRODUCTO = ?"
+				,[producto.nombre, producto.descripcion, producto.tipo, producto.material, producto.alto, producto.ancho, producto.profundidad, producto.color, producto.peso, producto.id]
 				,function(err, data, fields){
 					callback(err);
 				});
 		else
-			connection.query("UPDATE PRODUCTO SET NOMBRE = ?, DESCRIPCION = ?, PRECIO_VENTA = ?, CANTIDAD = ?, MATERIAL = ?, FOTO = ? WHERE ID_PRODUCTO = ?"
-				,[producto.nombre, producto.descripcion, producto.precio, producto.cantidad, producto.material, producto.foto, producto.id]
+			connection.query("UPDATE PRODUCTO SET NOMBRE = ?, DESCRIPCION = ?, TIPO = ?, MATERIAL = ?, ALTO = ?, ANCHO = ?, PROFUNDIDAD = ?, COLOR = ?, PESO = ?, FOTO = ? WHERE ID_PRODUCTO = ?"
+				,[producto.nombre, producto.descripcion, producto.tipo, producto.material, producto.alto, producto.ancho, producto.profundidad, producto.color, producto.peso, producto.foto, producto.id]
 				,function(err, data, fields){
 					callback(err);
 				});
@@ -141,6 +150,20 @@ module.exports = {
 		connection.query("DELETE FROM CLIENTE WHERE NUM_IDENTIFICACION = ?", [id], function(err, data, fields){
 			callback(1);
 		});
-	}
+	},
 
+	modificarPrecios: function(fields,callback){
+		
+		console.log(Object.keys(fields).length / 3);
+
+		for(var i = 0; i < Object.keys(fields).length / 3; i++){
+			connection.query("UPDATE PRODUCTO SET CANTIDAD = ?, PRECIO_VENTA = ? WHERE ID_PRODUCTO = ?"
+				, [fields["cantidad" + i], fields["precio" + i], fields["id" + i]]
+				, function(err, data, fields){
+					if(err)
+						console.log(err);
+				});
+		}
+		callback(null);
+	},
 }

@@ -1,0 +1,25 @@
+extends ../layout.jade
+block contenido
+	div(class = "container pt-4 center")
+		h1 Gestionar precios y cantidades
+		form(action = "/admin/modificarprecios" method = "POST" enctype="multipart/form-data")
+			table(class="table table-bordered table-light table-hover")
+				thead(class="thead-light")
+					tr
+						th(scope="col") Referencia
+						th(scope="col") Precio
+						th(scope="col") Cantidad
+				tbody
+					
+						- for(var i = 0; i < productos.length; i++)
+							tr
+								td
+									input(value = "#{productos[i].ID_PRODUCTO}" type = "number" placeholder = "Referencia" name = "id#{i}" id = "id#{i}" class = "form-control col-md-6" required = "required" readonly)
+								td
+									input(value = "#{productos[i].PRECIO_VENTA}" type = "number" placeholder = "Precio del producto" name = "precio#{i}" id = "precio#{i}" class = "form-control col-md-6" required = "required")
+								td
+									input(value = "#{productos[i].CANTIDAD}" type = "number" placeholder = "Cantidad" name = "cantidad#{i}" id = "cantidad#{i}" class = "form-control col-md-6" required = "required")
+			div(class = "row")
+				div(class = "col-12 alinearderecha")
+					button(type = "submit" class = "btn btn-primary") Guardar cambios
+					a(href = "/admin/preciosproductos" class = "btn btn-secondary") Cancelar

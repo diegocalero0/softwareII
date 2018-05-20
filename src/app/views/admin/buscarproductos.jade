@@ -1,0 +1,43 @@
+extends ../layout.jade
+block contenido
+	div(class ="container pt-4 pb-4")
+		div(class = "row")
+			div(class = "col-4")
+				h4(class = "row tituloblanco") Búsqueda de productos
+				form(action = "/admin/buscarproductos" method = "POST")
+					div(class = "form-group")
+						div(class = "row")
+							label(for = "referencia") Referencia
+						div(class = "row")
+							input(type = "text" placeholder = "Referencia" name = "referencia" id = "referencia" class = "form-control col-md-6")
+					div(class = "form-group")
+						div(class = "row")
+							label(for = "nombre") Nombre
+						div(class = "row")
+							input(type = "text" placeholder = "Nombre" name = "nombre" id = "nombre" class = "form-control col-md-6")
+					div(class = "form-group")
+						div(class = "row")
+							label(for = "tipo") Tipo
+						div(class = "row")
+							input(type = "text" placeholder = "Tipo" name = "tipo" id = "tipo" class = "form-control col-md-6")
+					div(class = "form-group")
+						div(class = "row")
+							input(type = "submit" class = "btn btn-primary" value = "Buscar")
+					div(class = "form-group row")
+						a(href = "/admin/buscarproductos" class = "btn btn-secondary") Cancelar
+
+			div(class = "col-8")
+				h1 Productos registrados
+				table(class="table table-bordered table-light table-hover")
+					thead(class="thead-light")
+						tr
+							th(scope="col") Referencia
+							th(scope="col") Nombre
+							th(scope="col") Tipo
+					tbody
+						- for(var i = 0; i < productos.length; i++)
+							tr
+								td
+									a(href = "/admin/modificarproducto/?id=#{productos[i].ID_PRODUCTO}" class = "tituloazul") #{productos[i].ID_PRODUCTO}
+								td #{productos[i].NOMBRE}
+								td #{productos[i].TIPO}

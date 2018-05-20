@@ -19,11 +19,27 @@ router.get("/agregarproducto", function(req, res){
 	res.render("admin/agregarProducto");
 });
 
-router.get("/modificarproducto", function(req, res){	
+router.get("/modificarproducto", function(req, res){
 	tienda.obtenerProducto(req.url.split("?")[1].split("=")[1], function(producto, err){
 		if(err)
 			console.log(err);
-		res.render("admin/modificarProducto", {producto});
+		res.render("admin/modificarProducto", {producto: producto});
+	});
+});
+
+router.get("/preciosproductos", function(req, res){
+	tienda.listarProductos(function(data, err){
+		res.render("admin/preciosproductos", {productos: data});
+	});
+});
+
+router.post("/modificarprecios", function(req, res){
+	console.log(req.fields);
+
+	tienda.modificarPrecios(req.fields, function(err){
+		if(err)
+			console.log(err);
+		res.redirect("/admin/preciosproductos");
 	});
 });
 
@@ -31,18 +47,26 @@ router.post("/confirmarmodificacion", function(req,res){
 	var referencia = req.fields.referencia;
 	var nombre = req.fields.nombre;
 	var descripcion = req.fields.descripcion;
-	var precio = req.fields.precio;
-	var cantidad = req.fields.cantidad;
+	var tipo = req.fields.tipo;
 	var materiales = req.fields.materiales;
+	var alto = req.fields.alto;
+	var ancho = req.fields.ancho;
+	var profundidad = req.fields.profundidad;
+	var color = req.fields.color;
+	var peso = req.fields.peso;
 	var imagen = "default.png";
 
 	var producto = {
 		"id": referencia,
 		"nombre": nombre,
 		"descripcion": descripcion,
-		"precio": precio,
-		"cantidad": cantidad,
+		"tipo": tipo,
 		"material": materiales,
+		"alto": alto,
+		"ancho": ancho,
+		"profundidad": profundidad,
+		"color": color,
+		"peso":peso,
 		"foto": imagen
 	}
 
@@ -52,8 +76,6 @@ router.post("/confirmarmodificacion", function(req,res){
 		var imgdb = referencia+"."+extension;
 		fs.rename(req.files.imagen.path, img);
 		producto.foto = imgdb;
-	}else{
-		producto.foto = undefined;
 	}
 
 	tienda.modificarProducto(producto, function(err){
@@ -120,8 +142,8 @@ router.post("/validarProducto", function(req, res){
 		"profundidad": profundidad,
 		"color": color,
 		"peso":peso,
-		"precio": precio,
-		"cantidad": cantidad,
+		"precio": 0,
+		"cantidad": 0,
 		"foto": imagen
 	}
 
@@ -208,6 +230,39 @@ router.get("/eliminarcliente", function(req, res){
 	tienda.eliminarCliente(id, function(eliminado){
 		res.redirect("/admin/clientes");
 	});
+});
+
+router.get("/buscarproductos", function(req, res){
+	tienda.listarProductos(function(data, err){
+		res.render("admin/buscarproductos", {productos: data});
+	});
+});
+
+router.post("/buscarproductos", function(req, res){
+	var referencia = req.fields.referencia;
+	var nombre = req.fields.nombre;
+	var tipo = req.fields.tipo;
+
+	if(referencia != ""){
+		tienda.listarProductosPorReferencia(referencia, function(data, err){
+			res.render("admin/buscarproductos", {productos: data});
+		});
+	}else if(nombre != ""){
+		tienda.listarProductosPorNombre(nombre, function(data, err){
+			res.render("admin/buscarproductos", {productos: data});
+		});
+	}else if(tipo != ""){
+		tienda.listarProductosPorTipo(tipo, function(data, err){
+			res.render("admin/buscarproductos", {productos: data});
+		});
+	}else{
+		tienda.listarProductos(function(data, err){
+			res.render("admin/buscarproductos", {productos: data});
+		});
+	}
+
+	
+	
 });
 
 module.exports = router;
