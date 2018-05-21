@@ -7,20 +7,39 @@ block contenido
 			div(class = "col-7")
 				div(class = "container pl-5")
 					div(class = "row")
-						h4(class = "infodetalleproducto") Cod. de referencia: #{producto.id}
+						h4(class = "infodetalleproducto") Cod. de referencia: #{producto.ID_PRODUCTO}
 					div(class = "row")
-						h4(class = "infodetalleproducto") #{producto.nombre}
+						h4(class = "infodetalleproducto") #{producto.NOMBRE}
 					div(class = "row")
-						h6(class = "infodetalleproducto") #{producto.descripcion}
+						h6(class = "infodetalleproducto") #{producto.DESCRIPCION}
 					div(class = "row")
-						h3(class = "infodetalleproducto precioinfoproducto") Precio: $#{producto.precio}
+						h3(class = "infodetalleproducto precioinfoproducto") Precio: $#{producto.PRECIO_VENTA}
 					div(class = "row")
-						h6(class = "infodetalleproducto") Unidades disponibles: #{producto.cantidad}
+						h6(class = "infodetalleproducto") Unidades disponibles: #{producto.CANTIDAD}
 					div(class = "row")
-						h6(class = "infodetalleproducto") Materiales: #{producto.material}
+						h6(class = "infodetalleproducto") Materiales: #{producto.MATERIAL}
+					div(class = "row")
+						h6(class = "infodetalleproducto") Tipo: #{producto.TIPO}
+					div(class = "row")
+						h6(class = "infodetalleproducto") Ancho: #{producto.ANCHO} cm
+					div(class = "row")
+						h6(class = "infodetalleproducto") Alto: #{producto.ALTO} cm
+					div(class = "row")
+						h6(class = "infodetalleproducto") Profundidad: #{producto.PROFUNDIDAD} cm
+					div(class = "row")
+						h6(class = "infodetalleproducto") Color: #{producto.COLOR}
+					div(class = "row")
+						h6(class = "infodetalleproducto") Peso: #{producto.PESO}
 					- if(type_user == 1){
 						div(class = "row")
-							a(href = "/user/agregaralcarrito/?id=#{producto.id}" class="btn btn-primary btn-block col-8")
-								i(class="material-icons") add_shopping_cart
+							div(class = "col-12")
+								form(action = "/user/agregaralcarrito" method = "POST" enctype="multipart/form-data")
+									div(class = "form-group row")
+										input(type = "hidden" value = "#{producto.ID_PRODUCTO}" name = "id" id = "id" class = "form-control col-md-6" required = "required")
+									div(class = "form-group row")
+										input(type = "number" min = 1 max = "#{producto.CANTIDAD}" placeholder = "Cantidad" name = "cantidad" id = "cantidad" class = "form-control col-md-6" required = "required")
+									div(class = "form-group row")
+										input(type = "submit" class = "col-md-6 btn btn-primary btn-block material-icons" value = "add_shopping_cart")
+								
 					- }
 		

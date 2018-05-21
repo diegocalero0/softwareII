@@ -1,4 +1,12 @@
 module.exports = {
+
+	agregarVenta: function(referencia, carrito, usuario, callback){
+		connection.query("INSERT INTO VENTA (ID_VENTA, FECHA, CLIENTE) VALUES(?, ?, ?)"
+			, [referencia, new Date(), usuario.NUM_IDENTIFICACION]
+			, function(err, data, fields){
+				callback(err);
+			});
+	},
 	
 	listarProductos: function(callback){
 		connection.query("SELECT * FROM PRODUCTO", function(err, data, field){

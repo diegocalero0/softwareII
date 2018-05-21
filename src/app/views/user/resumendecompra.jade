@@ -2,7 +2,7 @@ extends ../layout.jade
 block contenido
 	div(class = "container pt-4 pb-4")
 		div(class = "row titulocarrito")
-			h1(class = "col-9") Carrito de compras
+			h1(class = "col-9") Resumen de compra
 			h1(class = "col-3") Detalles
 		div(class = "row")
 			div(class = "col-9")
@@ -15,8 +15,6 @@ block contenido
 							th(scope="col") Precio unitario
 							th(scope="col") Cantidad
 							th(scope="col") Precio total
-							th(scope="col") Eliminar
-
 					tbody
 						- for(var i = 0; i < carrito.length; i++){
 							tr
@@ -26,18 +24,19 @@ block contenido
 								td #{carrito[i].NOMBRE}
 								td #{carrito[i].PRECIO_VENTA}
 								td #{carrito[i].CANTIDADAGREGADA}
-								td #{carrito[i].CANTIDADAGREGADA * carrito[i].PRECIO_VENTA}
-								td
-									a(href = "/user/eliminardelcarrito?id=#{i}" class="btn btn-danger")
-										i(class="material-icons") remove_shopping_cart
+								td #{carrito[i].PRECIO_VENTA * carrito[i].CANTIDADAGREGADA}
 						- }
-				div(class = "col-12 alinearderecha pr-0")
-					a(href = "/shop" class = "btn btn-primary") Continuar comprando
 			div(class = "col-3")
 				table(class="table table-bordered table-light table-hover")
 					tbody
 						tr
 							td Subtotal
 							td $ #{subtotal}
+						tr
+							td Envio
+							td $ 20000
+						tr
+							td Total
+							td $ #{subtotal + 20000}
 				div(class = "col-12 alinearderecha pl-0 pr-0")
-					a(href = "/user/efectuarcompra" class = "btn btn-primary btn-block") Efectuar compra
+					a(href = "/user/pagar" class = "btn btn-primary btn-block") Pagar

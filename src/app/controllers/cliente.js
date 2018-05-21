@@ -20,12 +20,13 @@ module.exports = {
 		callback();
 	},
 
-	agregarAlCarrito: function(req, id, callback){
+	agregarAlCarrito: function(req, id, cantidad, callback){
 		var producto = tienda.obtenerProducto(id, function(producto, err){
 			if(err)
 				console.log(err);
 			if(req.session.carrito == undefined)
 				req.session.carrito = [];
+			producto.CANTIDADAGREGADA = cantidad;
 			req.session.carrito.push(producto);
 			callback(err);
 		});

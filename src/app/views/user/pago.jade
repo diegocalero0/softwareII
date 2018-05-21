@@ -1,0 +1,41 @@
+extends ../layout.jade
+block contenido
+	div(class = "container pt-4 pb-4")
+		div(class = "row")
+			div(class = "col-8 pr-0")
+				h1 Descripción de la venta
+				table(class="table table-bordered table-light table-hover")
+							tr
+								td Referencia
+								td #{referencia}
+							tr
+								td Valor
+								td #{valor}
+							tr
+								td Descripción
+								td #{descripcion}
+		div(class = "row")
+			div(class = "col-12")
+				h1 Descripción del pago
+				form(action = "/user/completarpago" method = "POST" enctype="multipart/form-data")
+					div(class = "form-group row")
+						input(type = "hidden" value = "#{referencia}" name = "referencia" id = "referencia" class = "form-control col-md-5" required = "required" readonly)
+					div(class = "form-group row")
+						label(for="nombre" class="col-md-3 col-form-label") Nombre completo:
+						input(type = "text" value = "#{user.NOMBRE_COMPLETO}" placeholder = "Nombre completo" name = "nombre" id = "nombre" class = "form-control col-md-5" required = "required" readonly)
+					div(class = "form-group row")
+						label(for="tarjeta" class="col-md-3 col-form-label") Numero de tarjeta:
+						input(type = "text" placeholder = "Número de tarjeta" name = "tarjeta" id = "tarjeta" class = "form-control col-md-5" required = "required")
+					div(class = "form-group row")
+						label(for="codigo" class="col-md-3 col-form-label") Código de seguridad:
+						input(type = "number" placeholder = "Código de seguridad" name = "codigo" id = "codigo" class = "form-control col-md-5" required = "required")
+					div(class = "form-group row")
+						label(for="anio" class="col-md-3 col-form-label") Fecha de expiración:
+						input(type = "number" min = 2018 max = 2050 placeholder = "Año" name = "anio" id = "anio" class = "form-control col-md-1" required = "required")
+						p -
+						input(type = "number" min = 1 max = 12 placeholder = "Mes" name = "mes" id = "mes" class = "form-control col-md-1" required = "required")
+					div(class = "form-group row")
+						label(for="cuotas" class="col-md-3 col-form-label") Cantidad de cuotas:
+						input(type = "number" min = 1 max = 48 placeholder = "Cuotas" name = "cuotas" id = "cuotas" class = "form-control col-md-1" required = "required")
+					div(class = "form-group")
+						input(type = "submit" class = "btn btn-primary btn-block col-md-8 pl-0 pr-0" value = "Completar pago")

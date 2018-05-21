@@ -14,9 +14,3 @@ block contenido
 								div(class = "row")
 									div(class = "col-12")
 										a(href = "/shop/detalleproducto/?id=#{productos[i].ID_PRODUCTO}" class="btn btn-primary btn-block") Ver detalles
-								div(class = "row")
-									div(class = "col-12 pt-2")
-										- if(type_user == 1){
-											a(href = "/user/agregaralcarrito/?id=#{productos[i].ID_PRODUCTO}" class="btn btn-primary btn-block")
-												i(class="material-icons") add_shopping_cart
-										- }
