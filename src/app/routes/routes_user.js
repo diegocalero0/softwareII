@@ -61,6 +61,7 @@ router.post("/completarpago", function(req, res){
 	tienda.agregarVenta(referencia, req.session.carrito, res.locals.user, function(err){
 		if(err)
 			console.log(err);
+		req.session.carrito = [];
 		res.redirect("/shop");
 	});
 

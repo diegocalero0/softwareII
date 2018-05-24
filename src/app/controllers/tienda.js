@@ -1,12 +1,30 @@
-module.exports = {
+function agregarDetalleVenta(i, carrito, referencia, callback){
+		connection.query("INSERT INTO VENTA_PRODUCTO VALUES(?, ?, ?, ?)"
+			,[referencia, carrito[i].ID_PRODUCTO, carrito[i].PRECIO_VENTA, carrito[i].CANTIDADAGREGADA], function(err, data, fields){
+			connection.query("UPDATE PRODUCTO SET CANTIDAD = ? WHERE ID_PRODUCTO = ?"
+				,[carrito[i].CANTIDAD - carrito[i].CANTIDADAGREGADA, carrito[i].ID_PRODUCTO], function(err, data, fields){
+							callback(err);
+				});
+		});
+}
 
+module.exports = {
+	
 	agregarVenta: function(referencia, carrito, usuario, callback){
 		connection.query("INSERT INTO VENTA (ID_VENTA, FECHA, CLIENTE) VALUES(?, ?, ?)"
 			, [referencia, new Date(), usuario.NUM_IDENTIFICACION]
 			, function(err, data, fields){
+				for(var i = 0; i < carrito.length; i++){
+					agregarDetalleVenta(i, carrito, referencia, function(err){
+						if(err){
+							console.log(err);
+						}
+					});
+				}
 				callback(err);
 			});
 	},
+	
 	
 	listarProductos: function(callback){
 		connection.query("SELECT * FROM PRODUCTO", function(err, data, field){
