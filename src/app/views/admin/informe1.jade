@@ -1,0 +1,30 @@
+extends ../layout.jade
+block contenido
+	div(class = "container pt-4 pb-4")
+		div(class = "row pb-4")
+			form(class = "form-inline" action = "/admin/informes/informe1" method = "POST")
+				div(class = "form-group")
+					input(type = "date" class="form-control" id="dia" name = "dia" placeholder="Seleccione un día")
+				div(class = "form-group pl-2")
+					input(type = "submit" class = "btn btn-primary" value = "Generar reporte")
+		div(class = "row")
+			h1 TIENDA VIRTUAL
+		div(class = "row")
+			p(class = "tituloblanco") Armenia - Quindio | Fecha actual: #{new Date()}
+		div(class = "row")
+			table(class="table table-bordered table-light table-hover")
+				thead(class="thead-light")
+					tr
+						th(scope="col") Nombre del producto
+						th(scope="col") Cantidad
+						th(scope="col") Costo unitario
+						th(scope="col") Costo total
+				tbody
+					- for(var i = 0; i < productos.length; i++)
+						tr
+							td #{productos[i].NOMBRE}
+							td #{productos[i].CANTIDAD}
+							td #{productos[i].COSTO_UNITARIO}
+							td #{productos[i].COSTO_TOTAL}
+		div(class = "row")
+			h3(class = "tituloblanco") Total vendido: #{total}

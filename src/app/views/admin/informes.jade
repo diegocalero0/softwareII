@@ -1,0 +1,20 @@
+extends ../layout.jade
+block contenido
+	div(class = "container pt-4 pb-4")
+		div(class = "row")
+			div(class="card-deck col-12")
+				div(class = "card pb-4" clikable = true)
+					div(class = "card-body")
+						h5(class = "tituloazul center") Reporte de ventas diario
+						img(class="card-img-top showproduct" src="/static/images/informe.png" alt="Card image cap")
+						a(href = "/admin/informes/informe1" class = "clikable")
+				div(class = "card pb-4" clikable = true)
+					div(class = "card-body")
+						h5(class = "tituloazul center") Reporte de producto más vendido
+						img(class="card-img-top showproduct" src="/static/images/informe.png" alt="Card image cap")
+						a(href = "/admin/informes/informe2" class = "clikable")
+				div(class = "card pb-4" clikable = true)
+					div(class = "card-body")
+						h5(class = "tituloazul center") Reporte de compras por cliente
+						img(class="card-img-top showproduct" src="/static/images/informe.png" alt="Card image cap")
+						a(href = "/admin/informes/informe3" class = "clikable")

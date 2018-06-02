@@ -8,12 +8,42 @@ var administrador = require("../controllers/administrador");
 var tienda = require("../controllers/tienda");
 router.use(session_admin);
 
-
 router.get("/", function(req, res){
 	tienda.obtenerAdministradores(function(data){
 		res.render("admin/home", {usuario:req.session.useradmin, administradores: data});
 	});
 });
+
+router.get("/informes", function(req, res){
+	res.render("admin/informes");
+});
+
+router.get("/informes/informe1", function(req, res){
+	res.render("admin/informe1", {productos: {}, total: 0});
+});
+
+router.post("/informes/informe1", function(req, res){
+	var date = req.fields.dia;
+	tienda.ventasPorDia(date, function(err, resultados){
+		if(err)
+			console.log(err);
+		var valor = 0;
+		for(var i = 0; i < resultados.length; i++)
+			valor += resultados[i].COSTO_UNITARIO * resultados[i].CANTIDAD;
+		res.render("admin/informe1", {productos: resultados, total: valor});
+	});
+	
+});
+
+
+router.get("/informes/informe2", function(req, res){
+	res.render("admin/informes");
+});
+
+router.get("/informes/informe3", function(req, res){
+	res.render("admin/informes");
+});
+
 
 router.get("/agregarproducto", function(req, res){
 	res.render("admin/agregarProducto");

@@ -24,6 +24,13 @@ module.exports = {
 				callback(err);
 			});
 	},
+
+	ventasPorDia: function(fecha, callback){
+		connection.query("SELECT P.NOMBRE AS NOMBRE, SUM(VP.CANTIDAD) AS CANTIDAD, P.PRECIO_VENTA AS COSTO_UNITARIO, SUM(VP.PRECIO_VENTA * VP.CANTIDAD) AS COSTO_TOTAL from VENTA_PRODUCTO VP JOIN PRODUCTO P ON VP.ID_PRODUCTO = P.ID_PRODUCTO JOIN VENTA V ON V.ID_VENTA = VP.ID_VENTA WHERE DATE(V.FECHA) = ? GROUP BY VP.ID_PRODUCTO"
+			,[fecha], function(err, resultados, fields){
+				callback(err, resultados);
+			});
+	},
 	
 	
 	listarProductos: function(callback){
